@@ -22,3 +22,14 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+INICIO DA APLICACAO VAI TER:
+user -> front -> mexe uma peca
+front -> movimento -> back
+back -> validar movimento -> responde pro front se eh valido
+
+DEFINIR COMO SERA A COMUNICACAO ENTRE BACK/FRONT:
+- websocket
+- como eh os movimentos de peca -> notacao oficial do xadrez
