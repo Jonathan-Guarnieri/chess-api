@@ -33,7 +33,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
 
 # Use Redis adapter for Action Cable [https://guides.rubyonrails.org/action_cable_overview.html#configuration]
 gem 'redis', '~> 5.4'
