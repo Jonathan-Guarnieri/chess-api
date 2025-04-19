@@ -41,6 +41,12 @@ gem 'redis', '~> 5.4'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
+# JWT authentication for devise with configurable token revocation strategies
+gem 'devise-jwt', '~> 0.12.1'
+
+# Fast, simple and easy to use JSON:API serialization library (also known as fast_jsonapi).
+gem 'jsonapi-serializer', '~> 2.2'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

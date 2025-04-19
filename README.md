@@ -36,6 +36,12 @@ DEFINIR COMO SERA A COMUNICACAO ENTRE BACK/FRONT:
 
 
 
+Tutorial utilizado para implementar jwt e revogacao com jti:
+- https://sdrmike.medium.com/rails-7-api-only-app-with-devise-and-jwt-for-authentication-1397211fb97c
+(nesse tutorial tem uma explicacao de como lidar com um provavel erro que ainda nao tivemos)
+
+
+
 TODO:
 1) criar seed com um usuario para login em ambiente de testes
 2) ao iniciar um jogo, precisa criar um ID unico de jogo e armazenar ele como current_game para os 2 jogadores logados 
