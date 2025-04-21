@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_19_220945) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_21_235531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "boards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "white_player_id_id", null: false
+    t.bigint "black_player_id_id", null: false
+    t.string "fen"
+    t.bigint "winner_id_id", null: false
+    t.integer "win_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["black_player_id_id"], name: "index_games_on_black_player_id_id"
+    t.index ["white_player_id_id"], name: "index_games_on_white_player_id_id"
+    t.index ["winner_id_id"], name: "index_games_on_winner_id_id"
   end
 
   create_table "pieces", force: :cascade do |t|
@@ -39,4 +52,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_19_220945) do
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "games", "users", column: "black_player_id_id"
+  add_foreign_key "games", "users", column: "white_player_id_id"
+  add_foreign_key "games", "users", column: "winner_id_id"
 end
