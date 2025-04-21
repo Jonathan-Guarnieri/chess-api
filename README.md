@@ -34,6 +34,11 @@ DEFINIR COMO SERA A COMUNICACAO ENTRE BACK/FRONT:
 - websocket
 - como eh os movimentos de peca -> notacao oficial do xadrez
 
+MATCHMAKING:
+- o usuario que quiser jogar online, da subscribe no channel de matchmaking
+- quando dois usuarios estiverem prontos para jogar, receberao um transmit com o nome/id do channel do jogo para ele se conectar
+- enquanto conectado em um jogo, a tela automaticamente se adapta para a visao do player (pretas ou brancas). Caso seja um espectador, ele sempre vera pela visao das brancas
+
 
 
 Tutorial utilizado para implementar jwt e revogacao com jti:
