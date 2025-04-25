@@ -51,3 +51,4 @@ TODO:
 1) criar seed com um usuario para login em ambiente de testes
 2) ao iniciar um jogo, precisa criar um ID unico de jogo e armazenar ele como current_game para os 2 jogadores logados 
 3) [em caso de desconectar um usuario que estava jogando] ao abrir a aplicacao, se em jogo (usuario ao logar tem current_game), redireciona para o jogo e carrega o state atual (jogo que segue)
+4) suportar usuarios visitantes (guests) (tanto back quanto front precisam de alteracoes para esta feature)
