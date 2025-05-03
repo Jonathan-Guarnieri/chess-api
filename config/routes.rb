@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   mount ActionCable.server => '/cable'
+
+  get '/me', to: 'profiles#me'
 end
