@@ -319,5 +319,8 @@ Devise.setup do |config|
     jwt.revocation_requests = [
       ['DELETE', %r{^/logout$}]
     ]
+    jwt.request_formats = {
+      user: [ ->(request) { request.cookies['jwt_token'] } ]
+    }
   end
 end

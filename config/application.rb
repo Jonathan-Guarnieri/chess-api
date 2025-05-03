@@ -31,5 +31,6 @@ module ChessApi
 
     # Needed for JWT cookies:
     config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
   end
 end
