@@ -5,16 +5,14 @@ class Game < ApplicationRecord
   belongs_to :black_player, class_name: "User"
   belongs_to :winner, class_name: 'User', optional: true
 
-  enum win_type: {
-    checkmate: 0,
-    resignation: 1,
-    timeout: 2,
-    stalemate: 3,
-    draw_agreement: 4,
-    repetition: 5,
-    insufficient_material: 6,
-    abandoned: 7
-  }
+  enum :win_type, [ :checkmate,
+                    :resignation,
+                    :timeout,
+                    :stalemate,
+                    :draw_agreement,
+                    :repetition,
+                    :insufficient_material,
+                    :abandoned ]
 
   before_validation :set_initial_fen, on: :create
 
