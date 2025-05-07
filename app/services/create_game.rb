@@ -10,7 +10,7 @@ class CreateGame
 
     white_player, black_player = @players.sample(2)
 
-    game = Game.create!(white_player:, black_player:)
+    Game.create!(white_player:, black_player:)
   end
 
   private
