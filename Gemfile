@@ -56,4 +56,10 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Integrates the Rails testing helpers into RSpec
+  gem 'rspec-rails', '~> 8.0'
+
+  # Provides integration between factory_bot and rails
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.4'
 end
