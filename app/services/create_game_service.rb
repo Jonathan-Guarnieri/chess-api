@@ -1,6 +1,6 @@
-class CreateGame
-  def initialize(players_ids:)
-    @players_ids = players_ids
+class CreateGameService < ApplicationService
+  def initialize(player_ids:)
+    @player_ids = player_ids
   end
 
   def call
@@ -16,6 +16,6 @@ class CreateGame
   private
 
   def find_users
-    @players = User.where(id: @players_ids)
+    @players = User.where(id: @player_ids)
   end
 end

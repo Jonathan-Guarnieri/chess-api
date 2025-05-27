@@ -52,3 +52,12 @@ TODO:
 2) ao iniciar um jogo, precisa criar um ID unico de jogo e armazenar ele como current_game para os 2 jogadores logados 
 3) [em caso de desconectar um usuario que estava jogando] ao abrir a aplicacao, se em jogo (usuario ao logar tem current_game), redireciona para o jogo e carrega o state atual (jogo que segue)
 4) suportar usuarios visitantes (guests) (tanto back quanto front precisam de alteracoes para esta feature)
+
+
+
+Possíveis problemas previstos com o Matchmaker já antes da criação:
+1) entrar player1, enquanto verifica se tem alguem na fila para criar a partida, entra o player2 e comeca a fazer a mesma coisa, gerando 2 partidas
+Solução: lock para que novos players aguardem para entrar na fila até que o servico termine de processar uma possivel criacao de partida
+
+2) entra player1, é colocado na fila, porém ele sai da aplicacao. Entra um player2 e é criado uma partida com o player1 offline.
+Solução: quando um player entrar na fila, esse estado dura apenas 5 segundos. É necessário que o cliente continue pingando no servidor que ele está lá para que esse estado de "na fila" seja renovado.

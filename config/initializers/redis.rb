@@ -1,5 +1,3 @@
-# require 'redis' # Estamos testando sem o require para ver se precisa mesmo ou nao
-
 module RedisClientWrapper
   def self.instance
     @instance ||= ::Redis.new(
