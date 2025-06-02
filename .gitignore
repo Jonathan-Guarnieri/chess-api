@@ -33,3 +33,6 @@
 
 # Ignore simplecov reports
 /coverage
+
+# Ignore Mac OS internal files
+.DS_Store
