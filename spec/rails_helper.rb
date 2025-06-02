@@ -1,3 +1,10 @@
+# SimpleCov needs to stay at the top file
+require 'simplecov'
+SimpleCov.start 'rails' do
+  # ignore folders using "add_filter"
+  add_filter 'mailers'
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

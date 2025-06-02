@@ -63,3 +63,8 @@ group :development, :test do
   # Provides integration between factory_bot and rails
   gem 'factory_bot_rails', '~> 6.4', '>= 6.4.4'
 end
+
+group :test do
+  # Code coverage for Ruby
+  gem 'simplecov', '~> 0.22.0'
+end
