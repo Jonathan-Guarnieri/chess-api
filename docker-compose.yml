@@ -9,10 +9,11 @@ services:
       - "3000:3000"
     environment:
       - RAILS_ENV=development
-      - DATABASE_URL=postgres://postgres:password@db:5432/chess_api_development
-      - REDIS_URL=redis://redis:6379/1
-      - MATCHMAKER_RETRY_INTERVAL_MS=1000
-      - MATCHMAKER_ENQUEUE_TTL_SECONDS=5
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - MATCHMAKER_RETRY_INTERVAL_MS=${MATCHMAKER_RETRY_INTERVAL_MS}
+      - MATCHMAKER_ENQUEUE_TTL_SECONDS=${MATCHMAKER_ENQUEUE_TTL_SECONDS}
+      - DEVISE_JWT_SECRET_KEY=${DEVISE_JWT_SECRET_KEY}
     depends_on:
       - db
       - redis
