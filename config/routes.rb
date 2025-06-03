@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   mount ActionCable.server => '/cable'
+  mount Sidekiq::Web => "/sidekiq"
 
   get '/me', to: 'profiles#me'
 end

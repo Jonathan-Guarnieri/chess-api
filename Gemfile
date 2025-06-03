@@ -47,6 +47,9 @@ gem 'devise-jwt', '~> 0.12.1'
 # Fast, simple and easy to use JSON:API serialization library (also known as fast_jsonapi).
 gem 'jsonapi-serializer', '~> 2.2'
 
+# Simple, efficient background processing for Ruby
+gem 'sidekiq', '~> 8.0', '>= 8.0.4'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

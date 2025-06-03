@@ -1,5 +1,6 @@
-class MatchmakerJob < ApplicationJob
-  queue_as :default
+class MatchmakerJob
+  include Sidekiq::Job
+  sidekiq_options queue: :default
 
   def perform
     matchmaker = MatchmakerService.new
@@ -11,9 +12,10 @@ class MatchmakerJob < ApplicationJob
   private
 
   def try_again_later
-    interval_ms = ENV['MATCHMAKER_RETRY_INTERVAL_MS']
-    raise 'You need to set MATCHMAKER_RETRY_INTERVAL_MS env' unless interval_ms
+    interval_str = ENV['MATCHMAKER_RETRY_INTERVAL_MS']
+    raise 'You need to set MATCHMAKER_RETRY_INTERVAL_MS env' unless interval_str
 
-    self.class.perform_in(interval_ms.milliseconds)
+    interval_ms = Integer(interval_str)
+    self.class.perform_in(interval_ms / 1000.0)
   end
 end
