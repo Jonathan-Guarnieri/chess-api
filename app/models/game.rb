@@ -1,9 +1,9 @@
 class Game < ApplicationRecord
-  INITIAL_FEN ||= 'rn1qkbnr/pppb1ppp/8/3pp3/8/5NP1/PPPPPPBP/RNBQK2R w KQkq - 0 1'.freeze
+  INITIAL_FEN ||= "rn1qkbnr/pppb1ppp/8/3pp3/8/5NP1/PPPPPPBP/RNBQK2R w KQkq - 0 1".freeze
 
   belongs_to :white_player, class_name: "User"
   belongs_to :black_player, class_name: "User"
-  belongs_to :winner, class_name: 'User', optional: true
+  belongs_to :winner, class_name: "User", optional: true
 
   enum :win_type, [ :checkmate,
                     :resignation,

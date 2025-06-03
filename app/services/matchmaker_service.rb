@@ -16,7 +16,7 @@ class MatchmakerService < ApplicationService
         CreateGameService.call(player_ids:)
 
         player_ids.each do |player_id|
-          MatchmakerChannel.broadcast_to(player_id, { action: 'match_found' })
+          MatchmakerChannel.broadcast_to(player_id, { action: "match_found" })
         end
       end
     ensure
@@ -48,7 +48,7 @@ class MatchmakerService < ApplicationService
   end
 
   def release_lock
-    redis.eval(<<~LUA, keys: [lock_key], argv: [lock_token])
+    redis.eval(<<~LUA, keys: [ lock_key ], argv: [ lock_token ])
       if redis.call("get", KEYS[1]) == ARGV[1] then
         return redis.call("del", KEYS[1])
       else

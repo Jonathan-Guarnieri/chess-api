@@ -36,19 +36,19 @@ gem "thruster", require: false
 gem "rack-cors"
 
 # Use Redis adapter for Action Cable [https://guides.rubyonrails.org/action_cable_overview.html#configuration]
-gem 'redis', '~> 5.4'
+gem "redis", "~> 5.4"
 
 # Flexible authentication solution for Rails with Warden
-gem 'devise', '~> 4.9', '>= 4.9.4'
+gem "devise", "~> 4.9", ">= 4.9.4"
 
 # JWT authentication for devise with configurable token revocation strategies
-gem 'devise-jwt', '~> 0.12.1'
+gem "devise-jwt", "~> 0.12.1"
 
 # Fast, simple and easy to use JSON:API serialization library (also known as fast_jsonapi).
-gem 'jsonapi-serializer', '~> 2.2'
+gem "jsonapi-serializer", "~> 2.2"
 
 # Simple, efficient background processing for Ruby
-gem 'sidekiq', '~> 8.0', '>= 8.0.4'
+gem "sidekiq", "~> 8.0", ">= 8.0.4"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -61,13 +61,13 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Integrates the Rails testing helpers into RSpec
-  gem 'rspec-rails', '~> 8.0'
+  gem "rspec-rails", "~> 8.0"
 
   # Provides integration between factory_bot and rails
-  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.4'
+  gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
 end
 
 group :test do
   # Code coverage for Ruby
-  gem 'simplecov', '~> 0.22.0'
+  gem "simplecov", "~> 0.22.0"
 end

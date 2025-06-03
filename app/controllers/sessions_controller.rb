@@ -8,7 +8,7 @@ class SessionsController < Devise::SessionsController
   def create
     super do |user|
       if user.persisted?
-        token = request.env['warden-jwt_auth.token']
+        token = request.env["warden-jwt_auth.token"]
         cookies.signed[:jwt_token] = {
           value: token,
           httponly: true,

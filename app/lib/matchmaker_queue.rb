@@ -6,8 +6,8 @@ class MatchmakerQueue
 
   class << self
     def add(user_id)
-      ttl = ENV['MATCHMAKER_ENQUEUE_TTL_SECONDS']&.to_f
-      raise 'MATCHMAKER_ENQUEUE_TTL_SECONDS env not set or invalid' unless ttl&.positive?
+      ttl = ENV["MATCHMAKER_ENQUEUE_TTL_SECONDS"]&.to_f
+      raise "MATCHMAKER_ENQUEUE_TTL_SECONDS env not set or invalid" unless ttl&.positive?
 
       expire_at = Time.now.to_f + ttl
       redis.zadd(KEY, expire_at, user_id)

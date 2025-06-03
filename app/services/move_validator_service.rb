@@ -9,17 +9,17 @@ class MoveValidatorService < ApplicationService
     piece = @board_state[@from_square]
 
     case @piece.type
-    when 'Knight'
+    when "Knight"
       valid_knight_move?
-    when 'Bishop'
+    when "Bishop"
       valid_bishop_move?
-    when 'Rook'
+    when "Rook"
       valid_rook_move?
-    when 'Queen'
+    when "Queen"
       valid_queen_move?
-    when 'King'
+    when "King"
       valid_king_move?
-    when 'Pawn'
+    when "Pawn"
       valid_pawn_move?
     else
       false
