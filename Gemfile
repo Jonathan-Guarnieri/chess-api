@@ -70,4 +70,7 @@ end
 group :test do
   # Code coverage for Ruby
   gem "simplecov", "~> 0.22.0"
+
+  # A gem that makes testing time-dependent code deadly simple
+  gem 'timecop', '~> 0.9.10'
 end
