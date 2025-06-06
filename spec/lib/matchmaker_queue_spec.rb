@@ -53,8 +53,8 @@ RSpec.describe MatchmakerQueue do
       end
 
       popped = described_class.pop(2)
-      expect([popped]).to contain_exactly(uids[0..1])
-      expect(described_class.all).to eq([uids[2]])
+      expect([ popped ]).to contain_exactly(uids[0..1])
+      expect(described_class.all).to eq([ uids[2] ])
     end
 
     it "returns empty if count is invalid" do
@@ -80,7 +80,7 @@ RSpec.describe MatchmakerQueue do
     it "returns correct list before and after expiration purge" do
       add_user_with_ttl(user_id, expire_at)
 
-      expect(described_class.all).to eq([user_id])
+      expect(described_class.all).to eq([ user_id ])
 
       Timecop.travel(Time.now + ttl_seconds + 1) do
         expect(described_class.all).to eq([])
