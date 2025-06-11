@@ -8,4 +8,8 @@ class MatchmakerChannel < ApplicationCable::Channel
   def unsubscribed
     MatchmakerQueue.remove(current_user.id)
   end
+
+  def keep_alive
+    MatchmakerQueue.add(current_user.id)
+  end
 end
