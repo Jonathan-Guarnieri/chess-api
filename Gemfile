@@ -64,7 +64,7 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0"
 
   # Provides integration between factory_bot and rails
-  gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
+  gem "factory_bot_rails", "~> 6.5"
 end
 
 group :test do
