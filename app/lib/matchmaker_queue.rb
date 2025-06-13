@@ -20,6 +20,7 @@ class MatchmakerQueue
     end
 
     def pop(count)
+      # TODO: Nedds to return the user(s) that entered the queue first
       purge_expired_user_id_entries
       return [] unless count.is_a?(Integer) && count.positive?
 
@@ -36,6 +37,11 @@ class MatchmakerQueue
     def all
       purge_expired_user_id_entries
       redis.zrange(KEY, 0, -1)
+    end
+
+    def include?(user_id)
+      purge_expired_user_id_entries
+      redis.zscore(KEY, user_id).present?
     end
 
     private

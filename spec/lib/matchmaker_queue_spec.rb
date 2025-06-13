@@ -91,4 +91,23 @@ RSpec.describe MatchmakerQueue do
   def add_user_with_ttl(user_id, expire_at)
     redis.zadd(described_class::KEY, expire_at, user_id)
   end
+
+  describe ".include?" do
+    it "returns true if user is in queue" do
+      add_user_with_ttl(user_id, expire_at)
+      expect(described_class.include?(user_id)).to be true
+    end
+
+    it "returns false if user is not in queue" do
+      expect(described_class.include?(user_id)).to be false
+    end
+
+    it "purges expired entries before checking inclusion" do
+      add_user_with_ttl(user_id, expire_at)
+
+      Timecop.travel(Time.now + ttl_seconds + 1) do
+        expect(described_class.include?(user_id)).to be false
+      end
+    end
+  end
 end
