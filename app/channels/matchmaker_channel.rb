@@ -13,7 +13,7 @@ class MatchmakerChannel < ApplicationCable::Channel
     if MatchmakerQueue.include?(current_user.id)
       MatchmakerQueue.add(current_user.id)
     else
-      broadcast_to(current_user, { action: 'not_subscribed' })
+      broadcast_to(current_user, { action: "not_subscribed" })
     end
   end
 end

@@ -19,7 +19,7 @@ RSpec.describe MatchmakerService do
 
       it "creates a game" do
         service.call
-        expect(CreateGameService).to have_received(:call).with(player_ids: [player1, player2])
+        expect(CreateGameService).to have_received(:call).with(player_ids: [ player1, player2 ])
       end
 
       it "broadcasts to both players" do
