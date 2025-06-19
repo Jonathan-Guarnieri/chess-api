@@ -11,7 +11,6 @@ class MatchmakerService < ApplicationService
 
       if MatchmakerQueue.size >= 2
         player_ids = MatchmakerQueue.pop(2)
-        # TODO: Prevent game creation if either user is already in an active game
 
         CreateGameService.call(player_ids:)
 
