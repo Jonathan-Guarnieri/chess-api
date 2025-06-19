@@ -1,5 +1,16 @@
 version: '3.8'
 
+x-environment: &default-environment
+  - RAILS_ENV=development
+  - DATABASE_URL=${DATABASE_URL}
+  - REDIS_URL=${REDIS_URL}
+  - MATCHMAKER_RETRY_INTERVAL_MS=${MATCHMAKER_RETRY_INTERVAL_MS}
+  - MATCHMAKER_ENQUEUE_TTL_SECONDS=${MATCHMAKER_ENQUEUE_TTL_SECONDS}
+  - DEVISE_JWT_SECRET_KEY=${DEVISE_JWT_SECRET_KEY}
+
+x-volumes: &default-volumes
+  - .:/chess-api
+
 services:
   chess-api:
     build:
@@ -7,18 +18,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      - RAILS_ENV=development
-      - DATABASE_URL=${DATABASE_URL}
-      - REDIS_URL=${REDIS_URL}
-      - MATCHMAKER_RETRY_INTERVAL_MS=${MATCHMAKER_RETRY_INTERVAL_MS}
-      - MATCHMAKER_ENQUEUE_TTL_SECONDS=${MATCHMAKER_ENQUEUE_TTL_SECONDS}
-      - DEVISE_JWT_SECRET_KEY=${DEVISE_JWT_SECRET_KEY}
+    environment: *default-environment
     depends_on:
       - db
       - redis
-    volumes:
-      - .:/chess-api
+    volumes: *default-volumes
     command: /bin/sh -c "rm -f tmp/pids/server.pid && rails server -b '0.0.0.0'"
 
   db:
@@ -38,6 +42,17 @@ services:
     restart: always
     ports:
       - "6379:6379"
+
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+      - redis
+    environment: *default-environment
+    volumes: *default-volumes
+    command: bundle exec sidekiq -q matchmaker
 
 volumes:
   postgres_data:

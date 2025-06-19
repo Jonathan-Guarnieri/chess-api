@@ -1,6 +1,6 @@
 class MatchmakerJob
   include Sidekiq::Job
-  sidekiq_options queue: :default
+  sidekiq_options queue: :matchmaker
 
   def perform
     matchmaker = MatchmakerService.new
