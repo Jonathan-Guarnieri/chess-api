@@ -7,16 +7,23 @@ class MatchmakerService < ApplicationService
 
   def call
     begin
+      Rails.logger.info "[MatchmakerService]: Starting matchmaker process"
       return unless acquire_lock
 
       if MatchmakerQueue.size >= 2
+        Rails.logger.info "[MatchmakerService]: Enough players in queue, proceeding to create game"
         player_ids = MatchmakerQueue.pop(2)
 
         CreateGameService.call(player_ids:)
+        Rails.logger.info "[MatchmakerService]: Game created for players: #{player_ids.join(', ')}"
 
         player_ids.each do |player_id|
+          Rails.logger.info "[MatchmakerService]: Broadcasting match found for player #{player_id}"
           MatchmakerChannel.broadcast_to(player_id, { action: "match_found" })
         end
+      else
+        Rails.logger.info "[MatchmakerService]: Not enough players in queue, will try again later"
+        @try_again_later = true
       end
     ensure
       release_lock
