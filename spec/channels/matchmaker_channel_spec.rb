@@ -19,7 +19,7 @@ RSpec.describe MatchmakerChannel, type: :channel do
 
     expect(subscription).to be_confirmed
     expect(MatchmakerQueue).to have_received(:add).with(user.id).once
-    expect(subscription).to have_stream_for(user)
+    expect(subscription).to have_stream_for(user.id)
     expect(MatchmakerJob).to have_received(:perform_async).once
   end
 

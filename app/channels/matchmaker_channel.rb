@@ -1,7 +1,7 @@
 class MatchmakerChannel < ApplicationCable::Channel
   def subscribed
     MatchmakerQueue.add(current_user.id)
-    stream_for current_user
+    stream_for current_user.id
     MatchmakerJob.perform_async
   end
 
