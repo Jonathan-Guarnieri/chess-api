@@ -48,7 +48,7 @@ gem "devise-jwt", "~> 0.12.1"
 gem "jsonapi-serializer", "~> 2.2"
 
 # Simple, efficient background processing for Ruby
-gem "sidekiq", "~> 8.0", ">= 8.0.4"
+gem "sidekiq", "~> 8.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
