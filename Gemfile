@@ -50,6 +50,9 @@ gem "jsonapi-serializer", "~> 2.2"
 # Simple, efficient background processing for Ruby
 gem "sidekiq", "~> 8.0", ">= 8.0.4"
 
+# A fast chess library that use bitboards to play chess with Ruby
+gem 'chess', '~> 0.4.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
