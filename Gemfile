@@ -48,7 +48,7 @@ gem "devise-jwt", "~> 0.12.1"
 gem "jsonapi-serializer", "~> 2.2"
 
 # Simple, efficient background processing for Ruby
-gem "sidekiq", "~> 8.0", ">= 8.0.4"
+gem "sidekiq", "~> 8.0"
 
 # A fast chess library that use bitboards to play chess with Ruby
 gem 'chess', '~> 0.4.0'
